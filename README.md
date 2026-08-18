@@ -1,6 +1,6 @@
 # 🔍 找茬 (zhaocha)
 
-[![skills.sh](https://skills.sh/b/anthropics/skills)](https://skills.sh/anthropics/skills)
+[![skills.sh](https://skills.sh/b/helloliduofu/zhaocha)](https://skills.sh/helloliduofu/zhaocha)
 
 > 🪞 像照镜子一样，从各个角度审视你的工作成果
 
