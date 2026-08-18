@@ -124,26 +124,8 @@ AI 会自动分析产物，输出优化建议报告。
 
 ## 安装方式
 
-### 方式一：通过 skills.sh 安装
-
-访问 [skills.sh](https://skills.sh/helloliduofu/zhaocha) 一键安装。
-
-### 方式二：手动安装
-
 ```bash
-# 克隆到 Claude Code skills 目录
-cd ~/.claude/skills
-git clone https://github.com/helloliduofu/zhaocha.git
-```
-
-### 方式三：符号链接
-
-```bash
-# 克隆到任意位置
-git clone https://github.com/helloliduofu/zhaocha.git
-
-# 创建符号链接
-ln -s /path/to/zhaocha ~/.claude/skills/zhaocha
+npx skills add https://github.com/helloliduofu/zhaocha
 ```
 
 ## License
