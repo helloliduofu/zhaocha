@@ -1,5 +1,7 @@
 # 照查 (zhaocha)
 
+[![skills.sh](https://skills.sh/b/anthropics/skills)](https://skills.sh/anthropics/skills)
+
 > 像照镜子一样，从各个角度审视你的工作成果
 
 一个 Claude Code Skill，在代码/方案完成后，AI 自动从多个动态视角分析优化空间，减少人工反复迭代的工作量。
@@ -19,25 +21,6 @@ AI 会根据具体任务，动态推断需要哪些思考角度。
 
 ```
 完成任务 → AI 分析任务本质 → 动态生成思考视角 → 多视角并行分析 → 输出优化报告 → 用户确认 → 执行优化
-```
-
-## 安装
-
-### 方式一：直接克隆
-
-```bash
-cd ~/.claude/skills
-git clone https://github.com/your-username/zhaocha.git
-```
-
-### 方式二：符号链接（推荐开发时使用）
-
-```bash
-# 克隆到任意位置
-git clone https://github.com/your-username/zhaocha.git
-
-# 创建符号链接
-ln -s /path/to/zhaocha ~/.claude/skills/zhaocha
 ```
 
 ## 使用方式
@@ -139,17 +122,28 @@ AI 会自动分析产物，输出优化建议报告。
 4. **汇总报告**：统一格式输出，按严重度排序
 5. **执行优化**：用户确认后，执行选中的优化项
 
-## 开发
+## 安装方式
+
+### 方式一：通过 skills.sh 安装
+
+访问 [skills.sh](https://skills.sh/helloliduofu/zhaocha) 一键安装。
+
+### 方式二：手动安装
 
 ```bash
-# 克隆项目
-git clone https://github.com/your-username/zhaocha.git
-cd zhaocha
+# 克隆到 Claude Code skills 目录
+cd ~/.claude/skills
+git clone https://github.com/helloliduofu/zhaocha.git
+```
 
-# 本地测试
-ln -s $(pwd) ~/.claude/skills/zhaocha
+### 方式三：符号链接
 
-# 在其他项目中使用 Claude Code，完成工作后会自动触发
+```bash
+# 克隆到任意位置
+git clone https://github.com/helloliduofu/zhaocha.git
+
+# 创建符号链接
+ln -s /path/to/zhaocha ~/.claude/skills/zhaocha
 ```
 
 ## License
