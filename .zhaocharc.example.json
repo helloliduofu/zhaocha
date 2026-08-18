@@ -1,0 +1,18 @@
+{
+  "autoTrigger": true,
+  "minSeverity": "low",
+  "excludePatterns": [
+    "*.test.ts",
+    "*.test.tsx",
+    "*.spec.ts",
+    "*.spec.tsx",
+    "node_modules/**",
+    "dist/**",
+    "build/**"
+  ],
+  "customContext": {
+    "framework": "react",
+    "language": "typescript",
+    "style": "functional"
+  }
+}
