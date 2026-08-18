@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <!-- 背景 -->
+  <rect width="800" height="450" fill="#0d1117" rx="12"/>
+
+  <!-- 标题 -->
+  <text x="400" y="38" text-anchor="middle" fill="#e6edf3" font-size="20" font-weight="bold">🔍 找茬迭代收敛趋势</text>
+  <text x="400" y="60" text-anchor="middle" fill="#8b949e" font-size="13">Iterative Convergence — 每次迭代质量趋近目标</text>
+
+  <!-- 图表区域 -->
+  <rect x="80" y="80" width="640" height="300" fill="#161b22" rx="8" stroke="#30363d" stroke-width="1"/>
+
+  <!-- 网格线 -->
+  <g stroke="#21262d" stroke-width="1" stroke-dasharray="4,4">
+    <line x1="80" y1="140" x2="720" y2="140"/>
+    <line x1="80" y1="200" x2="720" y2="200"/>
+    <line x1="80" y1="260" x2="720" y2="260"/>
+    <line x1="80" y1="320" x2="720" y2="320"/>
+  </g>
+
+  <!-- Y轴标签（左侧 - 问题数量） -->
+  <text x="30" y="230" text-anchor="middle" fill="#f85149" font-size="12" transform="rotate(-90, 30, 230)">问题数量</text>
+  <text x="72" y="88" text-anchor="end" fill="#8b949e" font-size="11">10</text>
+  <text x="72" y="148" text-anchor="end" fill="#8b949e" font-size="11">8</text>
+  <text x="72" y="208" text-anchor="end" fill="#8b949e" font-size="11">5</text>
+  <text x="72" y="268" text-anchor="end" fill="#8b949e" font-size="11">3</text>
+  <text x="72" y="328" text-anchor="end" fill="#8b949e" font-size="11">1</text>
+  <text x="72" y="384" text-anchor="end" fill="#8b949e" font-size="11">0</text>
+
+  <!-- Y轴标签（右侧 - 质量评分） -->
+  <text x="770" y="230" text-anchor="middle" fill="#3fb950" font-size="12" transform="rotate(90, 770, 230)">质量评分</text>
+  <text x="728" y="88" text-anchor="start" fill="#8b949e" font-size="11">100</text>
+  <text x="728" y="148" text-anchor="start" fill="#8b949e" font-size="11">80</text>
+  <text x="728" y="208" text-anchor="start" fill="#8b949e" font-size="11">60</text>
+  <text x="728" y="268" text-anchor="start" fill="#8b949e" font-size="11">40</text>
+  <text x="728" y="328" text-anchor="start" fill="#8b949e" font-size="11">20</text>
+  <text x="728" y="384" text-anchor="start" fill="#8b949e" font-size="11">0</text>
+
+  <!-- X轴标签 -->
+  <text x="400" y="415" text-anchor="middle" fill="#8b949e" font-size="12">迭代轮次</text>
+  <g fill="#8b949e" font-size="11" text-anchor="middle">
+    <text x="144" y="400">1</text>
+    <text x="208" y="400">2</text>
+    <text x="272" y="400">3</text>
+    <text x="336" y="400">4</text>
+    <text x="400" y="400">5</text>
+    <text x="464" y="400">6</text>
+    <text x="528" y="400">7</text>
+    <text x="592" y="400">8</text>
+    <text x="656" y="400">9</text>
+    <text x="720" y="400">10</text>
+  </g>
+
+  <!-- 问题数量递减曲线 (红色) -->
+  <!-- 数据: 8, 5, 3, 2, 2, 1, 1, 0, 0, 0 -->
+  <!-- Y映射: 8→140, 5→200, 3→260, 2→290, 1→320, 0→380 -->
+  <defs>
+    <linearGradient id="redGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f85149" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#f85149" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="greenGradient" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#3fb950" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#3fb950" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 红色区域填充 -->
+  <path d="M144,140 L208,200 L272,260 L336,290 L400,290 L464,320 L528,320 L592,380 L656,380 L720,380 L720,380 L144,380 Z" fill="url(#redGradient)"/>
+
+  <!-- 红色曲线 -->
+  <polyline points="144,140 208,200 272,260 336,290 400,290 464,320 528,320 592,380 656,380 720,380" fill="none" stroke="#f85149" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- 红色数据点 -->
+  <g fill="#f85149">
+    <circle cx="144" cy="140" r="5"/><circle cx="208" cy="200" r="5"/><circle cx="272" cy="260" r="5"/>
+    <circle cx="336" cy="290" r="5"/><circle cx="400" cy="290" r="5"/><circle cx="464" cy="320" r="5"/>
+    <circle cx="528" cy="320" r="5"/><circle cx="592" cy="380" r="5"/><circle cx="656" cy="380" r="5"/>
+    <circle cx="720" cy="380" r="5"/>
+  </g>
+  <!-- 红色数据标签 -->
+  <g fill="#f85149" font-size="11" font-weight="bold" text-anchor="middle">
+    <text x="144" y="130">8</text><text x="208" y="192">5</text><text x="272" y="252">3</text>
+    <text x="336" y="282">2</text><text x="400" y="282">2</text><text x="464" y="312">1</text>
+    <text x="528" y="312">1</text><text x="592" y="372">0</text><text x="656" y="372">0</text>
+    <text x="720" y="372">0</text>
+  </g>
+
+  <!-- 质量评分递增曲线 (绿色) -->
+  <!-- 数据: 40, 55, 70, 80, 82, 90, 92, 98, 99, 100 -->
+  <!-- Y映射: score → 380 - (score/100)*300 -->
+  <!-- 40→260, 55→215, 70→170, 80→140, 82→134, 90→110, 92→104, 98→86, 99→83, 100→80 -->
+  <defs>
+    <linearGradient id="greenAreaGradient" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#3fb950" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#3fb950" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 绿色区域填充 -->
+  <path d="M144,260 L208,215 L272,170 L336,140 L400,134 L464,110 L528,104 L592,86 L656,83 L720,80 L720,380 L144,380 Z" fill="url(#greenAreaGradient)"/>
+
+  <!-- 绿色曲线 -->
+  <polyline points="144,260 208,215 272,170 336,140 400,134 464,110 528,104 592,86 656,83 720,80" fill="none" stroke="#3fb950" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- 绿色数据点 -->
+  <g fill="#3fb950">
+    <circle cx="144" cy="260" r="5"/><circle cx="208" cy="215" r="5"/><circle cx="272" cy="170" r="5"/>
+    <circle cx="336" cy="140" r="5"/><circle cx="400" cy="134" r="5"/><circle cx="464" cy="110" r="5"/>
+    <circle cx="528" cy="104" r="5"/><circle cx="592" cy="86" r="5"/><circle cx="656" cy="83" r="5"/>
+    <circle cx="720" cy="80" r="5"/>
+  </g>
+  <!-- 绿色数据标签 -->
+  <g fill="#3fb950" font-size="11" font-weight="bold" text-anchor="middle">
+    <text x="144" y="278">40</text><text x="208" y="233">55</text><text x="272" y="162">70</text>
+    <text x="336" y="132">80</text><text x="400" y="126">82</text><text x="464" y="102">90</text>
+    <text x="528" y="96">92</text><text x="592" y="78">98</text><text x="656" y="75">99</text>
+    <text x="720" y="72">100</text>
+  </g>
+
+  <!-- 目标线 -->
+  <line x1="80" y1="86" x2="720" y2="86" stroke="#d29922" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="90" y="82" fill="#d29922" font-size="11">🎯 目标: 98分</text>
+
+  <!-- 图例 -->
+  <rect x="280" y="430" width="240" height="16" fill="transparent"/>
+  <line x1="285" y1="438" x2="305" y2="438" stroke="#f85149" stroke-width="3"/>
+  <circle cx="295" cy="438" r="3" fill="#f85149"/>
+  <text x="312" y="442" fill="#e6edf3" font-size="12">问题数量</text>
+
+  <line x1="390" y1="438" x2="410" y2="438" stroke="#3fb950" stroke-width="3"/>
+  <circle cx="400" cy="438" r="3" fill="#3fb950"/>
+  <text x="417" y="442" fill="#e6edf3" font-size="12">质量评分</text>
+
+  <line x1="490" y1="438" x2="510" y2="438" stroke="#d29922" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="517" y="442" fill="#e6edf3" font-size="12">目标线</text>
+</svg>

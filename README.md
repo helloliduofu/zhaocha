@@ -20,8 +20,18 @@ AI 会根据具体任务，动态推断需要哪些思考角度。
 ## ⚙️ 工作流程
 
 ```
-完成任务 → AI 分析任务本质 → 动态生成思考视角 → 多视角并行分析 → 输出优化报告 → 用户确认 → 执行优化
+完成任务 → AI 分析 → 多视角分析 → 输出报告 → 用户确认 → 执行优化 → 🔁 循环迭代（默认10次）
 ```
+
+### 🔄 迭代收敛
+
+找茬支持**自动循环迭代**，每轮优化后再次分析，持续收敛直到质量达标。
+
+<p align="center">
+  <img src="./assets/iteration-convergence.svg" alt="迭代收敛趋势图" width="700"/>
+</p>
+
+随着迭代轮次增加，问题数量递减，质量评分递增，最终趋近目标值。
 
 ## 🚀 使用方式
 
@@ -89,6 +99,7 @@ AI 会自动分析产物，输出优化建议报告。
 ```json
 {
   "autoTrigger": true,
+  "maxIterations": 10,
   "minSeverity": "low",
   "excludePatterns": ["*.test.ts", "*.spec.ts"],
   "customContext": {
@@ -103,6 +114,7 @@ AI 会自动分析产物，输出优化建议报告。
 | 配置项 | 类型 | 默认值 | 说明 |
 |--------|------|--------|------|
 | `autoTrigger` | boolean | `true` | 🤖 是否自动触发 |
+| `maxIterations` | number | `10` | 🔁 最大迭代轮次，达到后自动停止 |
 | `minSeverity` | string | `"low"` | 🎚️ 最小显示严重度：`high` / `medium` / `low` |
 | `excludePatterns` | string[] | `[]` | 🚫 排除的文件模式 |
 | `customContext` | object | `{}` | 🎯 自定义上下文，帮助 AI 更好理解项目 |

@@ -1,5 +1,6 @@
 {
   "autoTrigger": true,
+  "maxIterations": 10,
   "minSeverity": "low",
   "excludePatterns": [
     "*.test.ts",
