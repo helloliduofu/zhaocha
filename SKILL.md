@@ -1,206 +1,234 @@
 ---
 name: zhaocha
-description: 找茬 🔍 - 任务完成后从多个动态视角分析优化空间，减少重复迭代。自动触发于代码/方案完成后。
+description: Zhaocha 🔍 - Multi-perspective optimization analysis after task completion to reduce iteration cycles. Auto-triggered after code/design completion.
 triggers:
   - /zhaocha
   - /zc
 ---
 
-# 🔍 找茬 (zhaocha) - 多视角优化分析
+# 🔍 Zhaocha - Multi-Perspective Optimization Analysis
 
-> 🪞 像照镜子一样，从各个角度审视你的工作成果
+> 🪞 Examine your work from every angle, like looking in a mirror
 
-## 触发条件
+## Trigger Conditions
 
-本 Skill 在以下场景**自动触发**：
-- 完成代码编写后（创建或修改了文件）
-- 完成方案设计后
-- 实现功能后
-- 修复 bug 后
+This skill auto-triggers in the following scenarios:
+- After completing code (created or modified files)
+- After completing a design/solution
+- After implementing a feature
+- After fixing a bug
 
-**不触发**的场景：
-- 只读操作（仅查看文件，未修改）
-- 简单的配置修改（如只改一个数字）
-- 用户明确说"不需要检查"或"跳过检查"
+Does NOT trigger for:
+- Read-only operations (viewing files, no modifications)
+- Simple config changes (e.g., changing a single number)
+- User explicitly says "no check needed" or "skip check"
 
-## 核心指令
+## Core Instructions
 
-当触发找茬时，按以下流程执行：
+**Quick Index**: [1. Analyze](#1-analyze-task-nature) → [2. Perspectives](#2-dynamically-generate-perspectives) → [3. Analysis](#3-multi-perspective-parallel-analysis) → [4. Severity](#4-severity-assessment) → [5. Report](#5-output-report) → [6. Confirm](#6-wait-for-user-confirmation) → [7. Execute](#7-execute-optimizations) → [8. Iterate](#8-iterate)
 
-### 1. 分析任务本质
+When triggered, follow this workflow:
 
-首先理解刚完成的工作：
-- 这是什么类型的产物？（代码/方案/配置/文档...）
-- 涉及哪些技术领域？（前端/后端/数据库/运维...）
-- 核心功能是什么？
-- 目标用户/使用者是谁？
+### 1. Analyze Task Nature
 
-### 2. 动态生成思考视角
+First, understand the completed work:
+- What type of artifact? (code/design/config/docs...)
+- What technical domains? (frontend/backend/database/devops...)
+- What is the core functionality?
+- Who is the target user/audience?
 
-根据任务特征，推断需要哪些思考视角。**不要预设固定角色**，而是根据具体情况动态生成。
+### 2. Dynamically Generate Perspectives
 
-**生成视角的原则**：
-- 这个任务容易在哪些方面出问题？
-- 哪些维度的审视对这个任务最有价值？
-- 有没有容易被忽略的角度？
+Infer the needed perspectives based on task characteristics. Do NOT use preset roles — generate dynamically based on the situation.
 
-**示例**（仅供参考，实际应动态生成）：
-- UI 组件 → 安全 + 异常处理 + 用户体验 + 无障碍 + 性能
-- API 设计 → 参数校验 + 错误处理 + 安全 + 向后兼容 + 文档
-- 数据库 → 一致性 + 查询性能 + 索引 + 迁移兼容 + 扩展性
-- CLI 工具 → 命令行规范 + 错误提示 + 帮助文档 + 管道组合 + 跨平台
+**Principles for generating perspectives**:
+- Where is this task most likely to have issues?
+- Which dimensions of review are most valuable for this task?
+- Are there any easily overlooked angles?
 
-### 3. 多视角并行分析
+**If no meaningful perspectives can be generated** (task is trivially simple or purely mechanical): skip directly to step 5 and output "Zhaocha complete — no obvious optimization points found". Do not force-generate perspectives.
 
-对每个生成的视角，以该视角的思维方式进行分析：
+**Examples** (for reference only, always generate dynamically):
+- UI Component → Security + Error Handling + UX + Accessibility + Performance
+- API Design → Input Validation + Error Handling + Security + Backward Compatibility + Documentation
+- Database → Consistency + Query Performance + Indexing + Migration Compatibility + Scalability
+- CLI Tool → CLI Conventions + Error Messages + Help Docs + Pipe Composition + Cross-platform
 
-**每个视角需要回答**：
-- 从这个角度看，有什么可以改进的？
-- 有哪些潜在的问题或风险？
-- 有没有更好的实现方式？
-- 是否遗漏了什么重要的场景？
+### 3. Multi-Perspective Parallel Analysis
 
-### 4. 评估严重度
+For each generated perspective, think from that viewpoint:
 
-对每个发现的问题，评估严重度：
-- 🔴 **HIGH**: 必须修复，影响功能/安全/正确性
-- 🟡 **MEDIUM**: 建议修复，影响质量/体验/可维护性
-- 🟢 **LOW**: 可选优化，锦上添花
+**Each perspective should answer**:
+- What can be improved from this angle?
+- What potential issues or risks exist?
+- Is there a better implementation approach?
+- Are any important scenarios missed?
 
-### 5. 输出报告
+### 4. Severity Assessment
 
-使用以下格式输出报告：
+Rate each finding:
+- 🔴 **HIGH**: Must fix — affects functionality/security/correctness
+- 🟡 **MEDIUM**: Should fix — affects quality/experience/maintainability
+- 🟢 **LOW**: Optional — nice to have
+
+### 5. Output Report
+
+> ⚠️ **Report Language**: Always output the report in the **user's language**. Detect the user's language from the conversation and produce the report accordingly. If the user writes in Chinese, the report is in Chinese. If in English, the report is in English. **Default to English if detection is uncertain.**
+
+Use the following format:
 
 ```markdown
-## 🔍 找茬报告
+## 🔍 Zhaocha Report
 
-**产物**: [文件路径或方案名称]
-**分析视角**: [视角1] | [视角2] | [视角3] ...
-
----
-
-### [[视角名称]]
-- [严重度] [具体建议]
-- [严重度] [具体建议]
+**Artifact**: [file path or solution name]
+**Perspectives**: [perspective 1] | [perspective 2] | [perspective 3] ...
 
 ---
 
-### 优化建议汇总
+### [[Perspective Name]]
+- [severity] [specific suggestion]
+- [severity] [specific suggestion]
 
-| # | 视角 | 严重度 | 建议 |
-|---|------|--------|------|
-| 1 | [视角] | 🔴 HIGH | [简述] |
-| 2 | [视角] | 🟡 MEDIUM | [简述] |
+---
+
+### Optimization Summary
+
+| # | Perspective | Severity | Suggestion |
+|---|-------------|----------|------------|
+| 1 | [perspective] | 🔴 HIGH | [summary] |
+| 2 | [perspective] | 🟡 MEDIUM | [summary] |
 | ... | ... | ... | ... |
 
-**执行**: `y` 全部 | `n` 跳过 | `1,3` 指定项
+**Actions**: `y` all | `n` skip | `1,3` specific | `仅HIGH` HIGH only | `HIGH+MEDIUM` HIGH+MID
 ```
 
-### 6. 等待用户确认
+### 6. Wait for User Confirmation
 
-报告输出后，等待用户选择：
-- `y` - 执行全部优化
-- `n` - 跳过所有优化
-- `1,3` - 只执行第1、3项（支持任意组合）
+After outputting the report, wait for user selection. Accept both shorthand and natural language:
+- `y` / `yes` / `全部` — Execute all optimizations
+- `n` / `no` / `skip` / `跳过` — Skip all
+- `1,3` — Execute only items 1 and 3 (supports any combination)
+- `仅HIGH` / `only HIGH` / `HIGH` — Execute only 🔴 HIGH items
+- `HIGH+MEDIUM` / `MEDIUM以上` — Execute 🔴 HIGH + 🟡 MEDIUM items
 
-### 7. 执行优化
+### 7. Execute Optimizations
 
-根据用户选择，依次执行对应的优化项。每执行一项，简要说明做了什么改动。
+Execute selected optimizations in order. For each, briefly explain what was changed.
 
-### 8. 循环迭代
+### 8. Iterate
 
-执行完优化后，进入下一轮找茬，持续迭代直到满足退出条件。
+After execution, enter the next round of zhaocha. Continue until exit conditions are met.
 
-**循环流程**：
+**Flow**:
 ```
-找茬分析 → 输出报告 → 用户确认 → 执行优化 → 再次找茬 → ... → 达到目标或次数上限
+Zhaocha Analysis → Output Report → User Confirms → Execute → Repeat → ... → Goal reached or max iterations
 ```
 
-**退出条件**（满足任一即停止）：
-- 达到配置的最大迭代次数（默认 10 次）
-- 当前轮次未发现新的优化点（质量已达标）
-- 用户主动中断
+**Exit conditions** (any one stops the loop):
+- Max iterations reached (default: 10)
+- No new optimization points found in current round (quality is sufficient)
+- User interrupts
 
-**每轮输出**：
+**Per-round output**:
 ```markdown
-### 🔄 迭代进度
+### 🔄 Iteration Progress
 
-**当前轮次**: 3 / 10
-**本轮发现**: 2 个优化点（较上轮减少 3 个）
-**累计优化**: 12 项
+**Current round**: 3 / 10
+**Findings this round**: 2 (down 3 from previous round)
+**Cumulative fixes**: 12
 
-| 轮次 | 发现数 | 已修复 | 质量评分 |
-|------|--------|--------|----------|
-| 1    | 8      | 8      | 60       |
-| 2    | 5      | 5      | 75       |
-| 3    | 2      | -      | 88       |
+| Round | Found | Fixed | Quality Score |
+|-------|-------|-------|---------------|
+| 1     | 8     | 8     | 60            |
+| 2     | 5     | 5     | 75            |
+| 3     | 2     | -     | 88            |
 
-继续迭代？`y` 继续 | `n` 停止
+Continue? `y` continue | `n` stop
 ```
 
-**质量评分规则**：
-- 初始 100 分
-- 每个 🔴 HIGH 未修复 -10 分
-- 每个 🟡 MEDIUM 未修复 -5 分
-- 每个 🟢 LOW 未修复 -2 分
+**Quality scoring**:
+- Start at 100
+- Each 🔴 HIGH unresolved: -10
+- Each 🟡 MEDIUM unresolved: -5
+- Each 🟢 LOW unresolved: -2
 
-## 特殊处理
+## Core Principles
 
-### 大型改动
+### 🎯 Stability First (Coding)
 
-如果产物涉及多个文件或大量改动：
-- 先输出整体报告
-- 建议用户分批次执行优化
-- 避免一次性改动过多导致难以 review
+> ⚠️ **Scope**: This principle applies **only to code artifacts**. For design, config, or documentation artifacts, prioritize clarity and correctness instead.
 
-### 无优化建议
+When analyzing code, this principle takes highest priority:
 
-如果分析后发现没有需要优化的地方：
-- 输出"找茬完成，未发现明显优化点"
-- 不要强行找问题
+1. **Minimize changes** — Only change what is strictly necessary. Do not refactor unrelated code, do not touch files that don't need changes, do not introduce unnecessary abstractions or "clean up" code that isn't directly related to the task.
+2. **Stability over elegance** — A working, stable solution is always better than a clever but fragile one. Prefer boring, proven patterns over novel approaches.
+3. **Preserve existing behavior** — Changes must not break existing functionality. Every modification should be scoped as narrowly as possible to achieve the goal.
+4. **No unnecessary dependencies** — Do not introduce new libraries or frameworks unless absolutely required. Leverage what already exists in the project.
+5. **One change at a time** — Each change should be atomic and independently verifiable. Avoid bundling unrelated fixes together.
 
-### 用户跳过
+**Checklist before proposing any code change**:
+- [ ] Is this change strictly necessary to achieve the goal?
+- [ ] Does it risk breaking existing functionality?
+- [ ] Can it be made smaller in scope?
+- [ ] Is it using existing project patterns and dependencies?
 
-如果用户选择跳过（`n`）：
-- 不要重复询问
-- 尊重用户决定
+## Special Cases
 
-## 注意事项
+### Large Changes
 
-1. **不要过度分析**：聚焦于真正有价值的优化点，不要纠结于细枝末节
-2. **保持实用**：建议要具体、可执行，不要泛泛而谈
-3. **尊重上下文**：考虑项目的技术栈、团队规范、业务场景
-4. **控制数量**：每次报告建议不超过 10 个优化点，避免信息过载
-5. **优先 HIGH**：严重度排序，让用户先看到最重要的问题
+If the artifact spans multiple files or has many changes:
+- Output an overall report first
+- Suggest batch execution for the user
+- Avoid too many changes at once (hard to review)
 
-## 示例
+### No Optimization Needed
 
-### 示例 1：React 组件
+If analysis finds nothing to improve:
+- Output "Zhaocha complete — no obvious optimization points found"
+- Do not force-find issues
 
-**产物**: `LoginForm.tsx`
+### User Skips
 
-**动态生成的视角**:
-- 安全视角（表单涉及敏感信息）
-- 异常处理视角（网络请求可能失败）
-- 用户体验视角（用户需要清晰反馈）
-- 无障碍视角（表单需要考虑可访问性）
+If user chooses to skip (`n`):
+- Do not ask again
+- Respect the decision
 
-### 示例 2：数据库迁移脚本
+## Notes
 
-**产物**: `migration_add_user_table.sql`
+1. **Don't over-analyze**: Focus on truly valuable improvements, not nitpicks
+2. **Stay practical**: Suggestions should be concrete and actionable, not vague
+3. **Respect context**: Consider the project's tech stack, team conventions, and business context
+4. **Limit findings**: No more than 10 optimization points per report to avoid overload
+5. **Prioritize HIGH**: Sort by severity so users see the most important issues first
 
-**动态生成的视角**:
-- 数据一致性视角（外键约束、事务）
-- 回滚安全视角（迁移失败如何恢复）
-- 性能视角（大表操作的锁问题）
-- 向后兼容视角（老代码是否受影响）
+## Examples
 
-### 示例 3：CLI 工具
+### Example 1: React Component
 
-**产物**: `deploy.sh`
+**Artifact**: `LoginForm.tsx`
 
-**动态生成的视角**:
-- 错误处理视角（命令失败如何提示）
-- 幂等性视角（重复执行是否安全）
-- 跨平台视角（macOS/Linux 兼容性）
-- 日志视角（执行过程是否可追踪）
+**Dynamically generated perspectives**:
+- Security (form handles sensitive data)
+- Error Handling (network requests may fail)
+- User Experience (users need clear feedback)
+- Accessibility (form must be accessible)
+
+### Example 2: Database Migration
+
+**Artifact**: `migration_add_user_table.sql`
+
+**Dynamically generated perspectives**:
+- Data Consistency (foreign keys, transactions)
+- Rollback Safety (how to recover from failed migration)
+- Performance (locking issues on large tables)
+- Backward Compatibility (do old code paths still work?)
+
+### Example 3: CLI Tool
+
+**Artifact**: `deploy.sh`
+
+**Dynamically generated perspectives**:
+- Error Handling (how failures are reported)
+- Idempotency (safe to run multiple times?)
+- Cross-platform (macOS/Linux compatibility)
+- Logging (is execution traceable?)
