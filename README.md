@@ -137,7 +137,7 @@ AI 会自动分析产物，输出优化建议报告。
 ## 📦 安装方式
 
 ```bash
-npx skills add https://github.com/helloliduofu/zhaocha
+npx skills add https://skills.sh/p/CszYngRKSWFOSbfx
 ```
 
 ## 📄 License
